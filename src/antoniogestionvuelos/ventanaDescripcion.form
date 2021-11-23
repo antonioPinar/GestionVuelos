@@ -106,6 +106,9 @@
               <Image iconType="2" name="C:\Users\anton\OneDrive\Im&#xe1;genes\Saved Pictures\imgBBDD.gif"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBDActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnTablas">
           <Properties>
@@ -113,6 +116,9 @@
               <Image iconType="2" name="C:\Users\anton\OneDrive\Im&#xe1;genes\Saved Pictures\imgTablas.jpg"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTablasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEstructura">
           <Properties>
@@ -130,7 +136,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="areaTexto">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>

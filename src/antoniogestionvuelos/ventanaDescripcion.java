@@ -11,11 +11,11 @@ package antoniogestionvuelos;
  */
 public class ventanaDescripcion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ventanaDescripcion
-     */
+    VuelosLogica metodos = new VuelosLogica();
+    
     public ventanaDescripcion() {
         initComponents();
+        metodos.getConnection();
     }
 
     /**
@@ -33,7 +33,7 @@ public class ventanaDescripcion extends javax.swing.JFrame {
         btnTablas = new javax.swing.JButton();
         btnEstructura = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areaTexto = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,8 +43,18 @@ public class ventanaDescripcion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 51, 204));
 
         btnBD.setIcon(new javax.swing.ImageIcon("C:\\Users\\anton\\OneDrive\\Imágenes\\Saved Pictures\\imgBBDD.gif")); // NOI18N
+        btnBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBDActionPerformed(evt);
+            }
+        });
 
         btnTablas.setIcon(new javax.swing.ImageIcon("C:\\Users\\anton\\OneDrive\\Imágenes\\Saved Pictures\\imgTablas.jpg")); // NOI18N
+        btnTablas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTablasActionPerformed(evt);
+            }
+        });
 
         btnEstructura.setIcon(new javax.swing.ImageIcon("C:\\Users\\anton\\OneDrive\\Imágenes\\Saved Pictures\\imgEstructura.gif")); // NOI18N
 
@@ -71,9 +81,9 @@ public class ventanaDescripcion extends javax.swing.JFrame {
                     .addComponent(btnEstructura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaTexto.setColumns(20);
+        areaTexto.setRows(5);
+        jScrollPane1.setViewportView(areaTexto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +116,16 @@ public class ventanaDescripcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBDActionPerformed
+
+        areaTexto.setText(metodos.informaBD());
+    }//GEN-LAST:event_btnBDActionPerformed
+
+    private void btnTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablasActionPerformed
+        
+        areaTexto.setText(metodos.informaTabla());
+    }//GEN-LAST:event_btnTablasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,12 +163,12 @@ public class ventanaDescripcion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaTexto;
     private javax.swing.JButton btnBD;
     private javax.swing.JButton btnEstructura;
     private javax.swing.JButton btnTablas;
     private javax.swing.JLabel etqMensaje;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
