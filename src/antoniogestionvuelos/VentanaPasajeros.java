@@ -11,11 +11,12 @@ package antoniogestionvuelos;
  */
 public class VentanaPasajeros extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaPasajeros
-     */
+    VuelosLogica metodos = new VuelosLogica();
+    
     public VentanaPasajeros() {
         initComponents();
+        metodos.getConnection();
+        metodos.cargaLista(this);
     }
 
     /**
@@ -40,8 +41,6 @@ public class VentanaPasajeros extends javax.swing.JFrame {
 
         etqCodVuelos.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         etqCodVuelos.setText("Codigo de vuelos");
-
-        cbCod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         tblPasajeros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +127,7 @@ public class VentanaPasajeros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbCod;
+    public javax.swing.JComboBox<String> cbCod;
     private javax.swing.JLabel etqCodVuelos;
     private javax.swing.JLabel etqMensaje;
     private javax.swing.JScrollPane jScrollPane1;
