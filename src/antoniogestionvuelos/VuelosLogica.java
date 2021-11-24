@@ -10,6 +10,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -98,6 +99,20 @@ public class VuelosLogica {
             Logger.getLogger(VuelosLogica.class.getName()).log(Level.SEVERE, null, ex);
         }
         return texto;
+    }
+    
+    public void cargaLista(VentanaPasajeros form){
+        try{
+            //crea un ResulSet para almacenar los datos que necesites de la tabla vuelos
+            Statement stmt = (Statement) conexion.createStatement();
+            ResultSet resultado = (ResultSet) stmt.executeQuery("SELECT cod_vuelo FROM vuelos");
+            
+            while (resultado.next()){
+                form.cbCod.addItem(resultado.getString("cod_vuelo"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VuelosLogica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
