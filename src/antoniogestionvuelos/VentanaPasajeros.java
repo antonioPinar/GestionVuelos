@@ -5,6 +5,13 @@
  */
 package antoniogestionvuelos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author anton
@@ -41,6 +48,12 @@ public class VentanaPasajeros extends javax.swing.JFrame {
 
         etqCodVuelos.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         etqCodVuelos.setText("Codigo de vuelos");
+
+        cbCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCodActionPerformed(evt);
+            }
+        });
 
         tblPasajeros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,6 +103,48 @@ public class VentanaPasajeros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCodActionPerformed
+        
+        //Crea una instancia de la clase DefaultTableModel para construir la tabla que vamos a
+        //asociar con el objeto JTable creado en el JFrame
+        DefaultTableModel modelo = new DefaultTableModel();
+        try{
+            //leemos el dato contenido en el com box
+            String cad= (String)cbCod.getSelectedItem();
+            
+            //crea un ResulSet para almacenar los datos que necesites de la tabla vuelos
+            Statement stmt = (Statement) metodos.conexion.createStatement();
+            ResultSet resultado = (ResultSet) stmt.executeQuery("SELECT num, tipo_plaza, fumador FROM pasajeros where cod_vuelo = " + "'" + cad + "'");
+            
+            //Añadimos al modelo de tabla las columnas necesarias. Debe coincidir con las establecidas en
+            //la select asociada al ResultSet
+            modelo.addColumn("NUM");
+            modelo.addColumn("TIPO_PLAZA");
+            modelo.addColumn("FUMADOR");
+            
+            //Define un array de objetos para almacenar cada fila de datos
+            Object datos[]=new Object[3]; //Numero de columnas de la tabla
+            
+            // Recorremos la vista resultante de la consulta, la almacenamos en el array de objetos.
+            while (resultado.next()){
+                for (int i = 0; i < 3; i++) {
+                    datos[i]=resultado.getObject(i+1);
+                }
+                //Añade la fila al modelo de tabla
+                modelo.addRow(datos);
+            }
+            
+            //Añade el modelo de tabla creado a el objeto JTable creado en el JFrame
+            tblPasajeros.setModel(modelo);
+            if (stmt != null) {
+                stmt.close(); 
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaPasajeros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cbCodActionPerformed
 
     /**
      * @param args the command line arguments
