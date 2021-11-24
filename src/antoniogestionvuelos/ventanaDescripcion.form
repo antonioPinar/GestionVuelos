@@ -126,6 +126,9 @@
               <Image iconType="2" name="C:\Users\anton\OneDrive\Im&#xe1;genes\Saved Pictures\imgEstructura.gif"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstructuraActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

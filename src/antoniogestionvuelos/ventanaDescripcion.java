@@ -57,6 +57,11 @@ public class ventanaDescripcion extends javax.swing.JFrame {
         });
 
         btnEstructura.setIcon(new javax.swing.ImageIcon("C:\\Users\\anton\\OneDrive\\Imágenes\\Saved Pictures\\imgEstructura.gif")); // NOI18N
+        btnEstructura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstructuraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,6 +131,12 @@ public class ventanaDescripcion extends javax.swing.JFrame {
         
         areaTexto.setText(metodos.informaTabla());
     }//GEN-LAST:event_btnTablasActionPerformed
+
+    private void btnEstructuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstructuraActionPerformed
+        
+        
+        areaTexto.setText(metodos.informaColumnas("pasajeros"));
+    }//GEN-LAST:event_btnEstructuraActionPerformed
 
     /**
      * @param args the command line arguments
